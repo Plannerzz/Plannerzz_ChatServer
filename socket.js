@@ -1,16 +1,15 @@
-const SocketIO = require("socket.io");
+const io = require("socket.io")();
 
-module.exports = (server) => {
-    const io = SocketIO(server);
-    io.on("connection", (socket) => {
-        console.log("user entered");
+io.on("connection", (socket) => {
+    console.log("user entered");
 
-        socket.on("disconnect", () => {
-            console.log("user disconnected");
-        });
-
-        socket.on("message", (msg) => {
-            io.emit("message", msgㅋ);
-        });
+    socket.on("disconnect", () => {
+        console.log("user disconnected");
     });
-};
+
+    socket.on("message", (msg) => {
+        socket.emit("message", msg);
+    });
+});
+
+module.exports = io;
