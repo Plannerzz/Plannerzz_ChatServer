@@ -1,6 +1,9 @@
 const io = require("socket.io")();
 
-io.on("connection", (socket) => {
+// namespace 생성
+const chat = io.of("/chat");
+
+chat.on("connection", (socket) => {
     console.log("user entered");
 
     socket.on("disconnect", () => {
