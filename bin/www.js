@@ -1,9 +1,9 @@
 // var debug = require('debug')('ex-test:server');
 const app = require("../app");
-const io = require("../config/socket"); //socket 연결
 const http = require("http");
+const webSocket = require('../socket')
 const port = 3000; // 기본 port
 
 const server = http.createServer(app);
-io.attach(server);
+webSocket(server)
 server.listen(port);
