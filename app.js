@@ -1,9 +1,12 @@
 const express = require("express");
 const app = express();
-const io = require("./socket");
+const mongo_connect = require("./config/db_mongo");
+const mysql_connect = require("./config/db_mysql");
 
-let indexRouter = require("./routes/chatroom");
-app.use("/", indexRouter);
+mongo_connect();
+mysql_connect();
 
+let chatRoomRouter = require("./routes/chatroom");
+app.use("/", chatRoomRouter);
 
 module.exports = app;
