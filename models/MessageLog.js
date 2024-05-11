@@ -13,6 +13,10 @@ const logSchema = new Schema({
         type: Number,
         required: true,
     },
+    userName: {
+        type: String,
+        required: true,
+    },
     comment: {
         type: String,
         required: true,
